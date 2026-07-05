@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import PertemuanQuickNav from '../components/PertemuanQuickNav'
+import PertemuanContentList from '../components/PertemuanContentList'
 
 const dummyPertemuan = [
   { id: 1, nomor: 1, judul: "Pengantar HCI", tag: null, selesai: true },
@@ -20,10 +21,29 @@ const dummyPertemuan = [
   { id: 16, nomor: 16, judul: "Ujian Akhir Semester", tag: "UAS", selesai: false },
 ]
 
+const dummyContentByPertemuan = {
+  1: [
+    { id: 101, tipe: "materi", judul: "Slide Pengantar HCI", selesai: true },
+    { id: 102, tipe: "forum", judul: "Forum Pertemuan 1", selesai: true },
+  ],
+  3: [
+    { id: 301, tipe: "materi", judul: "Modul Prototyping", selesai: false },
+    { id: 302, tipe: "tugas", judul: "Tugas Wireframe Low-Fidelity", selesai: false },
+    { id: 303, tipe: "forum", judul: "Forum Pertemuan 3", selesai: false },
+  ],
+  8: [
+    { id: 801, tipe: "tugas", judul: "UTS - Studi Kasus HCI", selesai: false },
+  ],
+  16: [
+    { id: 1601, tipe: "tugas", judul: "UAS - Proyek Akhir", selesai: false },
+  ],
+}
+
 function CourseDetail() {
   const [activeId, setActiveId] = useState(3)
 
   const activePertemuan = dummyPertemuan.find((p) => p.id === activeId)
+  const activeContent = dummyContentByPertemuan[activeId] || []
 
   return (
     <div className="p-6">
@@ -43,12 +63,10 @@ function CourseDetail() {
         />
 
         <div className="flex-1 bg-white border border-gray-200 rounded-xl p-5">
-          <h2 className="font-medium text-gray-900">
+          <h2 className="font-medium text-gray-900 mb-3">
             Pertemuan {activePertemuan.nomor} - {activePertemuan.judul}
           </h2>
-          <p className="text-sm text-gray-500 mt-1">
-            Konten materi/tugas/kuis/forum untuk pertemuan ini akan tampil di sini.
-          </p>
+          <PertemuanContentList items={activeContent} />
         </div>
       </div>
     </div>
