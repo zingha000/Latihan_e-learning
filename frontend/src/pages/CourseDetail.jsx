@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 import PertemuanQuickNav from '../components/PertemuanQuickNav'
 import PertemuanContentList from '../components/PertemuanContentList'
 
@@ -40,7 +41,15 @@ const dummyContentByPertemuan = {
 }
 
 function CourseDetail() {
-  const [activeId, setActiveId] = useState(3)
+  const navigate = useNavigate()
+
+const handleItemClick = (item) => {
+  if (item.tipe === 'tugas') {
+    navigate(`/tugas/${item.id}`)
+  } else {
+    alert(`Tipe "${item.tipe}" belum ada halamannya (belum di-scope Fase 1 ini)`)
+  }
+}
 
   const activePertemuan = dummyPertemuan.find((p) => p.id === activeId)
   const activeContent = dummyContentByPertemuan[activeId] || []
@@ -66,7 +75,7 @@ function CourseDetail() {
           <h2 className="font-medium text-gray-900 mb-3">
             Pertemuan {activePertemuan.nomor} - {activePertemuan.judul}
           </h2>
-          <PertemuanContentList items={activeContent} />
+          <PertemuanContentList items={activeContent} onItemClick={handleItemClick} />
         </div>
       </div>
     </div>

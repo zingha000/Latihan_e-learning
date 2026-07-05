@@ -4,6 +4,7 @@ import Dashboard from './pages/Dashboard'
 import Grades from './pages/Grades'
 import Profile from './pages/Profile'
 import CourseDetail from './pages/CourseDetail'
+import Assignment from './pages/Assignment'
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
           <Route path="/grades" element={<Grades />} />
           <Route path="/profile" element={<Profile />} />
           <Route path="/mata-kuliah/:id" element={<CourseDetail />} />
+          <Route path="/tugas/:id" element={<Assignment />} />
         </Route>
       </Routes>
     </BrowserRouter>
