@@ -1,0 +1,7 @@
+@import "tailwindcss";
+
+@theme {
+  --color-navy: #2E3192;
+  --color-orange: #F7941D;
+  --color-success: #2E7D32;
+}
