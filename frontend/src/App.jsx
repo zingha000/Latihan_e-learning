@@ -3,6 +3,7 @@ import MainLayout from './layouts/MainLayout'
 import Dashboard from './pages/Dashboard'
 import Grades from './pages/Grades'
 import Profile from './pages/Profile'
+import CourseDetail from './pages/CourseDetail'
 
 function App() {
   return (
@@ -12,6 +13,7 @@ function App() {
           <Route path="/" element={<Dashboard />} />
           <Route path="/grades" element={<Grades />} />
           <Route path="/profile" element={<Profile />} />
+          <Route path="/mata-kuliah/:id" element={<CourseDetail />} />
         </Route>
       </Routes>
     </BrowserRouter>
