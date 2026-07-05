@@ -7,6 +7,8 @@ import AuthCallback from './pages/AuthCallback'
 import Dashboard from './pages/Dashboard'
 import Grades from './pages/Grades'
 import Profile from './pages/Profile'
+import CourseDetail from './pages/CourseDetail'
+import Assignment from './pages/Assignment'
 
 function App() {
   return (
