@@ -1,4 +1,5 @@
 import { useMemo, useState } from 'react'
+import { Link } from 'react-router-dom'
 import { mockCourses } from '../data/mockCourses'
 import Card from '../components/ui/Card'
 
@@ -50,26 +51,28 @@ function Dashboard() {
 
       <div className="grid gap-4 mt-6 sm:grid-cols-2 lg:grid-cols-3">
         {courses.map((course) => (
-          <Card key={course.id}>
-            <span className={`text-xs font-semibold ${course.colorVariant === 'orange' ? 'text-orange' : 'text-navy'}`}>
-              {course.kode}
-            </span>
-            <h3 className="font-semibold text-neutral-dark mt-1">{course.nama}</h3>
-            <p className="text-xs text-gray-500 mt-1">{course.dosenNama}</p>
+          <Link key={course.id} to={`/courses/${course.id}`} className="block">
+            <Card className="hover:border-navy/40 transition-colors">
+              <span className={`text-xs font-semibold ${course.colorVariant === 'orange' ? 'text-orange' : 'text-navy'}`}>
+                {course.kode}
+              </span>
+              <h3 className="font-semibold text-neutral-dark mt-1">{course.nama}</h3>
+              <p className="text-xs text-gray-500 mt-1">{course.dosenNama}</p>
 
-            <div className="mt-4">
-              <div className="flex justify-between text-xs text-gray-500 mb-1">
-                <span>Course Progress</span>
-                <span>{course.progress}%</span>
+              <div className="mt-4">
+                <div className="flex justify-between text-xs text-gray-500 mb-1">
+                  <span>Course Progress</span>
+                  <span>{course.progress}%</span>
+                </div>
+                <div className="h-1.5 bg-gray-100 rounded-full overflow-hidden">
+                  <div
+                    className={`h-full rounded-full ${course.colorVariant === 'orange' ? 'bg-orange' : 'bg-navy'}`}
+                    style={{ width: `${course.progress}%` }}
+                  />
+                </div>
               </div>
-              <div className="h-1.5 bg-gray-100 rounded-full overflow-hidden">
-                <div
-                  className={`h-full rounded-full ${course.colorVariant === 'orange' ? 'bg-orange' : 'bg-navy'}`}
-                  style={{ width: `${course.progress}%` }}
-                />
-              </div>
-            </div>
-          </Card>
+            </Card>
+          </Link>
         ))}
 
         {courses.length === 0 && (

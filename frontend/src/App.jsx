@@ -22,6 +22,8 @@ function App() {
               <Route path="/" element={<Dashboard />} />
               <Route path="/grades" element={<Grades />} />
               <Route path="/profile" element={<Profile />} />
+              <Route path="/courses/:id" element={<CourseDetail />} />
+              <Route path="/tugas/:id" element={<Assignment />} />
             </Route>
           </Route>
         </Routes>

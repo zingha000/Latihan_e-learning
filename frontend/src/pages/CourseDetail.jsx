@@ -42,6 +42,7 @@ const dummyContentByPertemuan = {
 
 function CourseDetail() {
   const navigate = useNavigate()
+  const [activeId, setActiveId] = useState(1)
 
 const handleItemClick = (item) => {
   if (item.tipe === 'tugas') {
