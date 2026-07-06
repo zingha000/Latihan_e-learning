@@ -17,6 +17,10 @@ dist-ssr
 .vscode/*
 !.vscode/extensions.json
 .idea
+.claude/
+
+# Internal docs, not meant for the repo
+PRD-Redesign-Elearning-Widyatama.md
 .DS_Store
 *.suo
 *.ntvs*
